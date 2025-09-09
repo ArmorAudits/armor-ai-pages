@@ -1,0 +1,210 @@
+<html><head>
+<!-- Armor brand colors -->
+<style>
+:root{
+  --chain-Base:#0052FF;        /* Base blue */
+  --chain-Ethereum:#627EEA;    /* ETH purple */
+  --chain-Arbitrum:#28A0F0;    /* Arbitrum light blue */
+  --chain-Optimism:#FF0420;    /* OP red */
+  --chain-Polygon:#8247E5;     /* Polygon purple */
+  --chain-BNB-Chain:#F0B90B;   /* BNB yellow */
+  --chain-Solana:#9945FF;      /* Solana purple (fallback) */
+}
+/* utilities */
+.badge{padding:.25rem .5rem;border-radius:.5rem;font-weight:600;color:#fff;}
+.card{border-radius:12px;padding:12px;border:1px solid rgba(0,0,0,.07)}
+/* solid backgrounds */
+.chain-Base{background:var(--chain-Base)}
+.chain-Ethereum{background:var(--chain-Ethereum)}
+.chain-Arbitrum{background:var(--chain-Arbitrum)}
+.chain-Optimism{background:var(--chain-Optimism)}
+.chain-Polygon{background:var(--chain-Polygon)}
+.chain-BNB-Chain{background:var(--chain-BNB-Chain);color:#181A20} /* dark text on yellow */
+.chain-Solana{background:var(--chain-Solana)}
+/* optional Solana gradient */
+.chain-Solana-gradient{
+  background:linear-gradient(135deg,#14F195 0%,#59FBEA 50%,#9945FF 100%);
+}
+/* page chrome theming */
+body[data-chain] .page-accent{ background:var(--page-accent, var(--chain-Base)); color:#fff; }
+body[data-chain="BNB Chain"] .page-accent{ background:var(--chain-BNB-Chain); color:#181A20; }
+body[data-chain="Solana"] .page-accent{
+  background:linear-gradient(135deg,#14F195 0%,#59FBEA 50%,#9945FF 100%);
+  color:#0A0A0A;
+}
+/* buttons/links that follow the accent */
+.btn-primary{ background:var(--page-accent, #0052FF); color:#fff; border:0; }
+body[data-chain="BNB Chain"] .btn-primary{ color:#181A20; }
+a{ color:var(--page-accent, inherit); }
+</style>
+
+<!-- Theme-color for mobile tabs -->
+<meta name="theme-color" content="#0052FF">
+
+<script>
+(function(){
+  // Infer chain from filename: dashboard-<Chain>.html
+  const fname = (location.pathname.split('/').pop() || '').toLowerCase();
+  const map = {
+    'dashboard-base.html':'Base',
+    'dashboard-ethereum.html':'Ethereum',
+    'dashboard-arbitrum.html':'Arbitrum',
+    'dashboard-optimism.html':'Optimism',
+    'dashboard-polygon.html':'Polygon',
+    'dashboard-bnb-chain.html':'BNB Chain',
+    'dashboard-solana.html':'Solana',
+    'dashboard.html':'Global',
+    'index.html':'Global'
+  };
+  const chain = map[fname] || document.body.getAttribute('data-chain') || 'Global';
+  if(chain !== 'Global'){ document.body.setAttribute('data-chain', chain); }
+
+  // Body class for quick styling hooks
+  const cls = 'chain-' + chain.replace(/\s+/g,'-');
+  document.body.classList.add(cls);
+
+  // Data labels -> badges with correct color
+  document.querySelectorAll('[data-chain-label]').forEach(el=>{
+    el.textContent = chain;
+    el.classList.add('badge', cls);
+    if(chain==='Solana') el.classList.add('chain-Solana-gradient');
+  });
+
+  // Expose --page-accent var
+  const v = getComputedStyle(document.documentElement).getPropertyValue('--'+cls).trim();
+  if(v){ document.documentElement.style.setProperty('--page-accent', v); }
+
+  // Auto-theme a header/topbar if present (no HTML edits required)
+  const hdr = document.querySelector('header,.page-header,.topbar,.navbar,.nav');
+  if (hdr) hdr.classList.add('page-accent');
+
+  // Update mobile browser tab color
+  const m = document.querySelector('meta[name="theme-color"]');
+  if (m && v) m.setAttribute('content', v);
+})();
+</script>
+
+
+<!-- Armor brand colors -->
+<style>
+:root{
+  --chain-Base:#0052FF;
+  --chain-Ethereum:#627EEA;
+  --chain-Arbitrum:#28A0F0;  /* accent: #2D374B */
+  --chain-Optimism:#FF0420;
+  --chain-Polygon:#8247E5;
+  --chain-BNB-Chain:#F0B90B; /* dark text on yellow */
+  --chain-Solana:#9945FF;    /* fallback for gradient */
+}
+.badge{padding:.25rem .5rem;border-radius:.5rem;font-weight:600;color:#fff;}
+.chain-Base{background:var(--chain-Base)}
+.chain-Ethereum{background:var(--chain-Ethereum)}
+.chain-Arbitrum{background:var(--chain-Arbitrum)}
+.chain-Optimism{background:var(--chain-Optimism)}
+.chain-Polygon{background:var(--chain-Polygon)}
+.chain-BNB-Chain{background:var(--chain-BNB-Chain);color:#181A20}
+.chain-Solana{background:var(--chain-Solana)}
+.chain-Solana-gradient{
+  background:linear-gradient(135deg,#14F195 0%,#59FBEA 50%,#9945FF 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+body[data-chain] .page-accent{background:var(--page-accent, var(--chain-Base));color:#fff;}
+body[data-chain="BNB Chain"] .page-accent{background:var(--chain-BNB-Chain);color:#181A20;}
+body[data-chain="Solana"] .page-accent{
+  background:linear-gradient(135deg,#14F195 0%,#59FBEA 50%,#9945FF 100%);color:#0A0A0A;
+}
+a{color:inherit}
+</style>
+
+<script>
+(function(){
+  const f=(location.pathname.split('/').pop()||'').toLowerCase();
+  const map={
+    'dashboard-base.html':'Base',
+    'dashboard-ethereum.html':'Ethereum',
+    'dashboard-arbitrum.html':'Arbitrum',
+    'dashboard-optimism.html':'Optimism',
+    'dashboard-polygon.html':'Polygon',
+    'dashboard-bnb-chain.html':'BNB Chain',
+    'dashboard-solana.html':'Solana',
+    'dashboard.html':'Global',
+    'index.html':'Global'
+  };
+  const chain = map[f] || document.body.getAttribute('data-chain') || 'Global';
+  if(chain!=='Global') document.body.setAttribute('data-chain',chain);
+  const cls='chain-'+chain.replace(/\s+/g,'-'); document.body.classList.add(cls);
+  document.querySelectorAll('[data-chain-label]').forEach(el=>{
+    el.textContent=chain; el.classList.add('badge',cls);
+    if(chain==='Solana') el.classList.add('chain-Solana-gradient');
+  });
+  const root=getComputedStyle(document.documentElement);
+  const val=root.getPropertyValue('--'+cls).trim();
+  if(val) document.documentElement.style.setProperty('--page-accent',val);
+})();
+</script>
+
+
+<!-- Armor brand colors -->
+<style>
+:root{
+  --chain-Base:       #0052FF;       /* Base blue */
+  --chain-Ethereum:   #627EEA;       /* ETH purple */
+  --chain-Arbitrum:   #28A0F0;       /* Arbitrum light blue */
+  --chain-Optimism:   #FF0420;       /* OP red */
+  --chain-Polygon:    #8247E5;       /* Polygon purple */
+  --chain-BNB-Chain:  #F0B90B;       /* BNB yellow */
+  --chain-Solana:     #9945FF;       /* Solana purple fallback */
+}
+.badge{padding:.25rem .5rem;border-radius:.5rem;font-weight:600;color:#fff;}
+.chain-Base{background:var(--chain-Base)}
+.chain-Ethereum{background:var(--chain-Ethereum)}
+.chain-Arbitrum{background:var(--chain-Arbitrum)}
+.chain-Optimism{background:var(--chain-Optimism)}
+.chain-Polygon{background:var(--chain-Polygon)}
+.chain-BNB-Chain{background:var(--chain-BNB-Chain);color:#111} /* dark text on yellow */
+.chain-Solana-gradient{background:linear-gradient(135deg,#14F195 0%,#59FBEA 50%,#9945FF 100%)}
+</style>
+
+
+<!-- Armor brand colors -->
+<style>
+:root{ --accent:#666; }
+
+body.chain-Base      { --accent:#0052FF; }   /* Base */
+body.chain-Ethereum  { --accent:#627EEA; }   /* Ethereum */
+body.chain-Arbitrum  { --accent:#28A0F0; }   /* Arbitrum */
+body.chain-Optimism  { --accent:#FF0420; }   /* Optimism */
+body.chain-Polygon   { --accent:#8247E5; }   /* Polygon */
+body.chain-BNB-Chain { --accent:#F0B90B; color-scheme: light only; } /* BNB */
+body.chain-Solana    { --accent:#9945FF; }   /* solid fallback for Solana */
+
+.badge{ padding:.25rem .5rem; border-radius:.5rem; font-weight:600; color:#fff; background:var(--accent); }
+.accent-border{ border:2px solid var(--accent); border-radius:12px; }
+.accent-text{ color:var(--accent); }
+
+/* Optional: a subtle top bar to signal the chain color */
+.chain-topbar { height:4px; width:100%; background:var(--accent); }
+
+/* Optional Solana gradient class if you want it flashy on some elements */
+.solana-gradient { background:linear-gradient(135deg,#14F195 0%,#59FBEA 50%,#9945FF 100%); color:#000; }
+</style>
+
+<script>
+(function(){
+  // Pull chain from the filename: dashboard-<Chain>.html
+  var m = (location.pathname.match(/dashboard-([A-Za-z-]+)\.html/i)||[])[1];
+  if(!m){ return; }                       // index.html stays neutral
+  var chainClass = 'chain-' + m;
+  document.body.classList.add(chainClass);
+
+  // Add a slim top bar using the chain accent (Solana gets gradient)
+  var bar = document.createElement('div');
+  bar.className = 'chain-topbar';
+  if (m === 'Solana') {
+    bar.style.background = 'linear-gradient(135deg,#14F195 0%,#59FBEA 50%,#9945FF 100%)';
+  }
+  document.body.prepend(bar);
+})();
+</script>
+
+<meta charset='utf-8'><title>Armor Exec Dashboards</title><style>body{font-family:system-ui;background:#0a1022;color:#e6eeff;padding:24px} a{color:#9db4ff;text-decoration:none}</style></head><body><h1>Armor Exec Dashboards</h1><ul><li><a href='dashboard.html'>Global</a></li><li><a href='dashboard-Base.html'>Base</a></li><li><a href='dashboard-Ethereum.html'>Ethereum</a></li><li><a href='dashboard-Arbitrum.html'>Arbitrum</a></li><li><a href='dashboard-Optimism.html'>Optimism</a></li><li><a href='dashboard-Polygon.html'>Polygon</a></li><li><a href='dashboard-BNB-Chain.html'>BNB Chain</a></li><li><a href='dashboard-Solana.html'>Solana</a></li></ul></body></html>
