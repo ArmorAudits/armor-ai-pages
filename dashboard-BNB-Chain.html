@@ -1,0 +1,38 @@
+<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Armor Exec Dashboard — BNB Chain</title><style>
+:root{--bg:#0a1022;--fg:#e6eeff;--muted:#9fb3ff33;--bar-bg:#0e1838}
+*{box-sizing:border-box} body{background:var(--bg);color:var(--fg);font:14px/1.4 system-ui,Segoe UI,Roboto,Arial,sans-serif;margin:0;padding:24px}
+h1{margin:0 0 8px 0;font-size:24px} h2{font-size:18px;margin:22px 0 10px} h3{font-size:16px;margin:18px 0 8px}
+small, .muted{color:#a7baff99}
+.container{max-width:1200px;margin:0 auto}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.metrics{display:grid;grid-template-columns:repeat(6,minmax(120px,1fr));gap:10px;margin:10px 0 16px}
+.card{background:#0d1533;border:1px solid #26386b;border-radius:12px;padding:12px}
+.badge{display:inline-block;background:#17224a;color:#9fb3ff;border:1px solid #2a375c;border-radius:8px;padding:2px 6px;margin-right:6px}
+table{width:100%;border-collapse:collapse;margin-top:6px}
+th,td{border-bottom:1px solid #26386b;padding:8px 10px;text-align:left;vertical-align:top}
+code{background:#0b1433;border:1px solid #24315b;border-radius:6px;padding:1px 6px}
+.sev-pill{padding:.18rem .5rem;border-radius:999px;font-weight:600}
+.sev-CRITICAL{background:#2a0000;color:#ff8080;border:1px solid #611}
+.sev-HIGH{background:#2b1900;color:#ffc266;border:1px solid #643}
+.sev-MEDIUM{background:#0a1b2b;color:#7cc0ff;border:1px solid #345}
+.sev-LOW{background:#0d2a0d;color:#9ef3a0;border:1px solid #363}
+.bar{position:relative;background:var(--bar-bg);border:1px solid #2a375c;height:22px;border-radius:7px;overflow:hidden;min-width:140px}
+.bar-fill{height:100%}
+.bar-label{position:absolute;left:8px;top:2px;font-weight:600}
+.chip{display:inline-block;padding:.15rem .45rem;border-radius:8px;border:1px solid #2a375c;margin-right:.25rem}
+.chip.Base{background:#0b1433;color:#8db7ff;border-color:#27418a}
+.chip.Ethereum{background:#111;color:#bbb;border-color:#444}
+.chip.Arbitrum{background:#071a2e;color:#8bc9ff;border-color:#2d4c70}
+.chip.Optimism{background:#2a0a0a;color:#ff9a9a;border-color:#5a1a1a}
+.chip.Polygon{background:#1a0a2a;color:#c79cff;border-color:#3d1f61}
+.chip.Solana{background:#061a12;color:#83f0c6;border-color:#1e5a44}
+.chip.BNB{background:#2a250a;color:#ffe27a;border-color:#6b631e}
+.movers{margin:6px 0 0 16px}
+.footer{margin-top:16px;color:#a7baff99}
+</style></head><body><div class='container'><h1>Armor Exec Dashboard — BNB Chain</h1><div class='muted'>Updated: 2025-12-07 05:23Z</div><div class='metrics'><div class='card'><div class='badge'>Intel items</div><div><b>0</b></div></div><div class='card'><div class='badge'>Exploited in the wild</div><div><b>0</b></div></div><div class='card'><div class='badge'>Max ArmorScore</div><div><b>0.000</b></div></div><div class='card'><div class='badge'>TVL at risk (CRIT chains)</div><div><b>$0.0B</b></div></div></div><div class='card'><h3>Top risks (ArmorScore)</h3><table><thead><tr><th>ID</th><th>Score</th><th>Severity</th><th>Chains</th><th>Title</th></tr></thead><tbody><tr><td colspan='5'>No scored items yet</td></tr></tbody></table></div><div class='card'><h3>Top movers</h3><div class='grid2'><div><h4>Top Risers (Δ)</h4><div class='muted'>No changes</div></div><div><h4>Top Droppers (Δ)</h4><div class='muted'>No changes</div></div></div><div class='muted'>Δ since last snapshot.</div></div><div class='card'><h3>Chain exposure</h3><table><thead><tr><th>Chain</th><th>CRIT</th><th>HIGH</th><th>MED</th><th>LOW</th></tr></thead><tbody><tr><td><span class='chip Arbitrum'>Arbitrum</span></td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td><span class='chip Base'>Base</span></td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td><span class='chip BNB Chain'>BNB Chain</span></td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td><span class='chip Ethereum'>Ethereum</span></td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td><span class='chip Optimism'>Optimism</span></td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td><span class='chip Polygon'>Polygon</span></td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td><span class='chip Solana'>Solana</span></td><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table></div><div class='footer'>visuals: severity pills, gradient score bars, per-chain chips, movers with deltas. no external libs.</div></div></body></html>
